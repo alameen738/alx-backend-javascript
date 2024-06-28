@@ -1,22 +1,18 @@
-/* eslint-disable no-underscore-dangle */
-class Building {
-  constructor(sqft) {
-    if (
-      this.constructor !== Building
-      && typeof this.evacuationWarningMessage !== 'function'
-    ) {
-      throw Error(
-        'Class extending Building must override evacuationWarningMessage',
-      );
-    }
+// 6-sky_high_building.js
 
-    this._sqft = sqft;
+import Building from './5-building.js';
+
+export default class SkyHighBuilding extends Building {
+  constructor(sqft, floors) {
+    super(sqft);
+    this._floors = floors;
   }
 
-  // sqft
-  get sqft() {
-    return this._sqft;
+  get floors() {
+    return this._floors;
+  }
+
+  evacuationWarningMessage() {
+    return `Evacuate slowly the ${this._floors} floors.`;
   }
 }
-
-export default Building;
