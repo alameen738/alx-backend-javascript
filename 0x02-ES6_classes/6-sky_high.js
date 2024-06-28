@@ -1,20 +1,22 @@
-import Building from './5-building';
+/* eslint-disable no-underscore-dangle */
+class Building {
+  constructor(sqft) {
+    if (
+      this.constructor !== Building
+      && typeof this.evacuationWarningMessage !== 'function'
+    ) {
+      throw Error(
+        'Class extending Building must override evacuationWarningMessage',
+      );
+    }
 
-export default class SkyHighBuilding extends Building {
-  constructor(sqft, floors) {
-    super(sqft);
-    this._floors = floors;
+    this._sqft = sqft;
   }
 
-  get floors() {
-    return this._floors;
-  }
-
-  set floors(value) {
-    this._floors = value;
-  }
-
-  evacuationWarningMessage() {
-    return `Evacuate slowly the ${this.floors} floors`;
+  // sqft
+  get sqft() {
+    return this._sqft;
   }
 }
+
+export default Building;
